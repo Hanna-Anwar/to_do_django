@@ -11,6 +11,8 @@ from task_app.models import TaskModel
 
 from django.urls import reverse_lazy
 
+from django.db.models import Q
+
 
 class TaskAddView(View):
 
@@ -91,3 +93,18 @@ class TaskCompleteView(View):
 
           return redirect("home")
 
+class SearchView(View):
+
+     template_name = "search.html"
+
+     def get(self,request):
+
+          query = request.GET.get('q')
+
+          task = TaskModel.objects.filter(user = request.user)
+
+          if query:
+
+               task = task.filter(Q(priority__icontains = query) | Q(task_name__icontains = query))
+
+          return render(request,self.template_name,{"task":task})

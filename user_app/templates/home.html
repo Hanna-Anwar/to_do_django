@@ -191,6 +191,10 @@
 
     <a href="{% url 'add_task' %}" class="btn-add">+ Add New Task</a>
 
+    <form action="{% url 'search' %}" method="get">
+      <input style="margin-left: 75px;" type="text" name="q"><span><button type="submit">Search</button></span>
+    </form>
+
     <div class="table-container">
       <table class="table table-bordered table-hover align-middle">
         <thead>

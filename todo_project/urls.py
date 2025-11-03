@@ -41,4 +41,6 @@ urlpatterns = [
     path("",HomeView.as_view(),name="home"),
 
     path('taskcomplete/<int:pk>',TaskCompleteView.as_view(),name="complete"),
+
+    path('search/',SearchView.as_view(),name="search")
 ]
