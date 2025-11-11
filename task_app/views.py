@@ -70,7 +70,7 @@ class TaskUpdateView(UpdateView):
 class TaskDeleteView(View):
 
      def get(self,request,**kwargs):
-
+ 
           d_id = kwargs.get('pk')
 
           data = get_object_or_404(TaskModel,id=d_id,user = request.user)

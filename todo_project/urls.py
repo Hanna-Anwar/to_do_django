@@ -42,5 +42,5 @@ urlpatterns = [
 
     path('taskcomplete/<int:pk>',TaskCompleteView.as_view(),name="complete"),
 
-    path('search/',SearchView.as_view(),name="search")
+    path('search/',SearchView.as_view(),name="search"),
 ]

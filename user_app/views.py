@@ -58,7 +58,6 @@ class LoginView(View):
 
         return render(request,"login.html")
     
-
     def post(self,request):
    
         username = request.POST.get('username')
@@ -67,7 +66,7 @@ class LoginView(View):
 
         user = authenticate(request,username=username,password=password)
 
-        print("Authenticated user:", user)
+        # print("Authenticated user:", user)
 
         if user:
 
@@ -84,14 +83,18 @@ class LogoutView(View):
 
         logout(request)
 
-        return redirect("login")
-
-
+        return redirect("home")
 
 class HomeView(View):
 
     def get(self,request):
 
-        task = TaskModel.objects.filter(user = request.user)
+        if request.user.is_authenticated:
 
-        return render(request,"home.html",{"task":task})
+            task = TaskModel.objects.filter(user = request.user)
+
+            return render(request,"home.html",{"task":task})
+        
+        return render(request,"home.html")
+        
+    
