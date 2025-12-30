@@ -21,6 +21,8 @@ from user_app.views import *
 
 from task_app.views import *
 
+from api_sample.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -43,4 +45,8 @@ urlpatterns = [
     path('taskcomplete/<int:pk>',TaskCompleteView.as_view(),name="complete"),
 
     path('search/',SearchView.as_view(),name="search"),
+
+    path('listcreate/',TodoListCreate.as_view(),name="list_create"),
+
+    path('updateretrievedelete/<int:pk>',TodoUpdateRetrieveDeleteView.as_view(),name="Update_Retrieve_Delete")
 ]
